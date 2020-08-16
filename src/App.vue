@@ -9,20 +9,15 @@
 </template>
 
 <script>
-import { reactive } from 'vue'
 import WifiForm from './components/WifiForm.vue'
 import QRCode from './components/QRCode.vue'
 import { useState as useWifi } from './state/wifi'
 
 export default {
   name: 'App',
-  components: {WifiForm, QRCode},
+  components: { WifiForm, QRCode },
   setup () {
-    const {state: wifi, setState} = useWifi()
-
-    const state = reactive({
-      wifi
-    })
+    const { state } = useWifi()
 
     return {
       state

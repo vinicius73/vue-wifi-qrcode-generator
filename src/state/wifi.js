@@ -3,7 +3,7 @@ import { reactive, readonly } from 'vue'
 const state = reactive({
   ssid: 'my ssid',
   password: 'my password',
-  type: 'WPA',
+  type: 'WPA'
 })
 
 const setState = newState => {
@@ -11,7 +11,7 @@ const setState = newState => {
 }
 
 const useState = () => {
-  return { state: readonly(state), setState}
+  return { state: readonly(state), setState }
 }
 
 export { useState }

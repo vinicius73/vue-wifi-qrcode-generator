@@ -6,15 +6,15 @@ module.exports = {
     content: [
       './index.html',
       './src/**/*.vue',
-      './src/**/*.js',
+      './src/**/*.js'
       // etc.
-    ],
+    ]
   },
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-      },
-    },
-  },
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+      }
+    }
+  }
 }

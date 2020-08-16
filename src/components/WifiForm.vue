@@ -1,5 +1,5 @@
 <script>
-import { reactive, watchEffect } from 'vue'
+import { watchEffect } from 'vue'
 import { useState as useWifi } from '../state/wifi'
 
 export default {
@@ -7,7 +7,7 @@ export default {
   setup () {
     const { state, setState } = useWifi()
     const onChange = ev => {
-      const {name, value} = ev.target
+      const { name, value } = ev.target
 
       setState({
         [name]: value

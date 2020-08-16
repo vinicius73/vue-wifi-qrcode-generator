@@ -1,4 +1,4 @@
-const specials = [';', ':', ',', '"', `'`, '\\'];
+const specials = [';', ':', ',', '"', '\'', '\\']
 
 const escape = (value) => {
   return (value || '')
