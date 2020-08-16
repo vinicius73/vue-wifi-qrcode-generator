@@ -11,7 +11,7 @@
 <script>
 import WifiForm from './components/WifiForm.vue'
 import QRCode from './components/QRCode.vue'
-import { useState as useWifi } from './state/wifi'
+import { useWifi } from './state/wifi'
 
 export default {
   name: 'App',

@@ -13,4 +13,8 @@ const escape = (value) => {
     .join('')
 }
 
-export { escape }
+const buildQRCodeData = ({ type, ssid, password }) => {
+  return `WIFI:T:${type};S:${escape(ssid)};P:${escape(password)};;`
+}
+
+export { buildQRCodeData }

@@ -1,6 +1,6 @@
 <script>
 import { watchEffect } from 'vue'
-import { useState as useWifi } from '../state/wifi'
+import { useWifi } from '../state/wifi'
 
 export default {
   name: 'WifiInfo',
