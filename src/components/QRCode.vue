@@ -1,6 +1,7 @@
 <script>
 import QRCode from 'qrcode'
-import { ref, computed, watchEffect } from 'vue'
+import { ref, computed, watchEffect, onMounted } from 'vue'
+import { debounce } from 'lodash-es'
 import { escape } from '../lib/escape'
 import { useState as useWifi } from '../state/wifi'
 
@@ -15,15 +16,21 @@ export default {
       return `WIFI:T:${state.type};S:${escape(state.ssid)};P:${escape(state.password)};;`
     })
 
-    watchEffect(async () => {
+    const updateQrCode = debounce(async text => {
       imageSrc.value = await QRCode.toDataURL(
-          raw.value,
-          {
-            errorCorrectionLevel: 'H',
-            margin: 2,
-            scale: 50,
-          }
-        )
+        text,
+        {
+          errorCorrectionLevel: 'H',
+          margin: 2,
+          scale: 50,
+        }
+      )
+    }, 500)
+
+    onMounted(() => {
+      watchEffect(() => {
+        updateQrCode(raw.value)
+      })
     })
 
     return {
