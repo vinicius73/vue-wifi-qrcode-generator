@@ -4,8 +4,10 @@
       <WifiInfo
         v-model:ssid="state.wifi.ssid"
         v-model:password="state.wifi.password"
+        v-model:type="state.wifi.type"
        />
-      <QRCode v-bind="state.wifi" />
+      <QRCode class="row-span-2" v-bind="state.wifi" />
+      <pre>{{state}}</pre>
     </div>
   </div>
 </template>
@@ -21,8 +23,9 @@ export default {
   setup () {
     const state = reactive({
       wifi: {
-        ssid: 'ee',
-        password: 'qq'
+        ssid: 'my ssid',
+        password: 'my password',
+        type: 'WPA',
       }
     })
 

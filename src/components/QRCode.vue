@@ -8,6 +8,7 @@ export default {
   props: {
     ssid: String,
     password: String,
+    type: String,
   },
   setup (props) {
     const state = reactive({
@@ -17,7 +18,7 @@ export default {
 
     const hasImage = computed(() => state.imageSrc.length > 0)
     const raw = computed(() => {
-      return `WIFI:T:WPA;S:${escape(props.ssid)};P:${escape(props.password)};;`
+      return `WIFI:T:${props.type};S:${escape(props.ssid)};P:${escape(props.password)};;`
     })
 
     watch(
@@ -28,7 +29,9 @@ export default {
         state.imageSrc = await QRCode.toDataURL(
           text,
           {
-            scale: 20,
+            errorCorrectionLevel: 'H',
+            margin: 2,
+            scale: 50,
           }
         )
 

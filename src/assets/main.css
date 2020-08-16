@@ -1,15 +1,26 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+/* form */
 
 input[type="text"] {
-  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  @apply appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight;
 }
 
 input[type="text"]:focus {
-  @apply outline-none shadow-outline;
+  @apply outline-none bg-white;
 }
 
+select {
+  @apply block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight;
+}
+
+select:focus {
+  @apply outline-none bg-white border-gray-500;
+}
+
+/* elements */
+
 .box {
-  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4
+  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4;
 }
