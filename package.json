@@ -6,6 +6,7 @@
     "build": "cross-env NODE_ENV=production vite build"
   },
   "dependencies": {
+    "qrcode": "^1.4.4",
     "tailwindcss": "^1.6.2",
     "vue": "^3.0.0-rc.5"
   },

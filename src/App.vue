@@ -1,12 +1,11 @@
 <template>
   <div class="container mx-auto">
-    <pre>{{ state }}</pre>
     <div class="grid grid-cols-2 gap-4">
       <WifiInfo
         v-model:ssid="state.wifi.ssid"
         v-model:password="state.wifi.password"
        />
-      <QRCode />
+      <QRCode v-bind="state.wifi" />
     </div>
   </div>
 </template>
@@ -27,16 +26,8 @@ export default {
       }
     })
 
-    const onWifiChange = (data) => {
-      console.log({ data });
-      state.wifi = {
-        ...data
-      }
-    }
-
     return {
-      state,
-      onWifiChange
+      state
     }
   }
 }
