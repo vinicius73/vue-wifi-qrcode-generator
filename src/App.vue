@@ -1,14 +1,43 @@
 <template>
   <div class="container mx-auto">
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-      <strong class="font-bold">Hello!</strong>
-      <span class="block sm:inline">Init Project.</span>
+    <pre>{{ state }}</pre>
+    <div class="grid grid-cols-2 gap-4">
+      <WifiInfo
+        v-model:ssid="state.wifi.ssid"
+        v-model:password="state.wifi.password"
+       />
+      <QRCode />
     </div>
   </div>
 </template>
 
 <script>
+import { reactive } from 'vue'
+import WifiInfo from './components/WifiInfo.vue'
+import QRCode from './components/QRCode.vue'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {WifiInfo, QRCode},
+  setup () {
+    const state = reactive({
+      wifi: {
+        ssid: 'ee',
+        password: 'qq'
+      }
+    })
+
+    const onWifiChange = (data) => {
+      console.log({ data });
+      state.wifi = {
+        ...data
+      }
+    }
+
+    return {
+      state,
+      onWifiChange
+    }
+  }
 }
 </script>

@@ -1,3 +1,15 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+input[type="text"] {
+  @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+}
+
+input[type="text"]:focus {
+  @apply outline-none shadow-outline;
+}
+
+.box {
+  @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4
+}

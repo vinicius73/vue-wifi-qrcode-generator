@@ -268,7 +268,7 @@
     "@vue/compiler-core" "3.0.0-rc.5"
     "@vue/shared" "3.0.0-rc.5"
 
-"@vue/compiler-sfc@^3.0.0-rc.1", "@vue/compiler-sfc@^3.0.0-rc.5":
+"@vue/compiler-sfc@^3.0.0-rc.5":
   version "3.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/@vue/compiler-sfc/-/compiler-sfc-3.0.0-rc.5.tgz#374e52a6fbf8fb9aee1213026050a0f1c496fecf"
   integrity sha512-huoIFEfFCJxHcpoByAUQti7CIwJdHPLJXKuy2HG7J1B+IEKugtBdF50CLH35ZD8dWM0nyOMFFqTbO7i6CCjL3Q==
@@ -1978,9 +1978,9 @@ rollup-pluginutils@^2.8.2:
     estree-walker "^0.6.1"
 
 rollup@^2.20.0:
-  version "2.26.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.26.0.tgz#736ffa773fe0cefdfd0b9669abdce444d6a68f07"
-  integrity sha512-1kwpBuxQERz+ymjPLepaXqf3NMRDwSumuEfW/fsTtflmyyhI6ev7nLy5Vdadvn01zd0WWAojRuvA2+0coPGCGQ==
+  version "2.26.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.26.1.tgz#e3c8283ac3ec434ed91fa3d5bbb9231f3276913f"
+  integrity sha512-02YjpGeUJNRQtxGrwX79gDnrNonu9Gu6eu1cgXcvj3rqqN5lr6Erl3t1yYtnexdEvPAfI32PBALYyAbdsBsL8A==
   optionalDependencies:
     fsevents "~2.1.2"
 
@@ -2094,6 +2094,11 @@ strip-final-newline@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strip-final-newline/-/strip-final-newline-2.0.0.tgz#89b852fb2fcbe936f6f4b3187afb0a12c1ab58ad"
   integrity sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==
+
+stylelint-config-recommended@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/stylelint-config-recommended/-/stylelint-config-recommended-3.0.0.tgz#e0e547434016c5539fe2650afd58049a2fd1d657"
+  integrity sha512-F6yTRuc06xr1h5Qw/ykb2LuFynJ2IxkKfCMf+1xqPffkxh0S09Zc902XCffcsw/XMFq/OzQ1w54fLIDtmRNHnQ==
 
 supports-color@^5.3.0, supports-color@^5.4.0:
   version "5.5.0"
@@ -2270,7 +2275,7 @@ vite@^1.0.0-rc.1:
     vue "^3.0.0-rc.5"
     ws "^7.2.3"
 
-vue@^3.0.0-rc.1, vue@^3.0.0-rc.5:
+vue@^3.0.0-rc.5:
   version "3.0.0-rc.5"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.0.0-rc.5.tgz#973175d45a892b3bd23ef5de7faa4add9c66275f"
   integrity sha512-8t8Y4sHMBGD5iLZ7JfBGmKBJlzesPoL+/nW9EV8s+4LwnKC4rGlRp+Lj2rcign4iQaj0GFaL7DrQ8IoOfVX6+w==
