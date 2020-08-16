@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <div class="box">
+  <div>
     <img v-if="hasImage" :src="imageSrc">
     <div v-else>
       Loading...
