@@ -1,11 +1,7 @@
 <template>
   <div class="container mx-auto">
     <div class="grid grid-cols-2 gap-4">
-      <WifiInfo
-        v-model:ssid="state.wifi.ssid"
-        v-model:password="state.wifi.password"
-        v-model:type="state.wifi.type"
-       />
+      <WifiForm />
       <QRCode class="row-span-2" v-bind="state.wifi" />
       <pre>{{state}}</pre>
     </div>
@@ -14,19 +10,18 @@
 
 <script>
 import { reactive } from 'vue'
-import WifiInfo from './components/WifiInfo.vue'
+import WifiForm from './components/WifiForm.vue'
 import QRCode from './components/QRCode.vue'
+import { useState as useWifi } from './state/wifi'
 
 export default {
   name: 'App',
-  components: {WifiInfo, QRCode},
+  components: {WifiForm, QRCode},
   setup () {
+    const {state: wifi, setState} = useWifi()
+
     const state = reactive({
-      wifi: {
-        ssid: 'my ssid',
-        password: 'my password',
-        type: 'WPA',
-      }
+      wifi
     })
 
     return {
