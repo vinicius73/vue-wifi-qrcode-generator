@@ -1,13 +1,19 @@
 <script>
 import { useWifi } from '../state/wifi'
 import IconWifi from './icons/Wifi.vue'
+import IconPrinter from './icons/Printer.vue'
 
 export default {
-  components: { IconWifi },
+  name: 'wifi-info',
+  components: { IconWifi, IconPrinter },
   setup () {
     const { state } = useWifi()
+    const print = () => {
+      window.print()
+    }
 
     return {
+      print,
       state
     }
   }
@@ -31,6 +37,13 @@ export default {
       <dt>Password</dt>
       <dd>{{ state.password }}</dd>
     </dl>
+    <div class="hide-on-print text-center">
+      <hr class="border-vue-green">
+      <button @click="print">
+        <IconPrinter />
+        Print your QR Code
+      </button>
+    </div>
   </section>
 </template>
 
