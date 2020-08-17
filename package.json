@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "cross-env NODE_ENV=production vite build",
+    "deploy:surge": "yarn build && surge dist/",
     "lint": "eslint src/"
   },
   "dependencies": {
