@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+// const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
@@ -12,8 +12,12 @@ module.exports = {
   },
   theme: {
     extend: {
+      colors: {
+        'vue-blue': 'var(--vue-blue)',
+        'vue-green': 'var(--vue-green)'
+      },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans]
+        // sans: ['Inter var', ...defaultTheme.fontFamily.sans]
       }
     }
   }

@@ -41,9 +41,9 @@ dl dt {
 }
 dl dd {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 1.5em;
   font-family: monospace;
-  margin-bottom: 1em;
-  padding-left: 1em;
+  margin-bottom: 0.8em;
+  padding-left: 0.9em;
 }
 </style>
