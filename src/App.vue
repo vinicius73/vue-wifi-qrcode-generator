@@ -1,15 +1,13 @@
 <template>
   <div id="app">
     <PageHeader />
-    <div class="container">
-      <div class="grid grid-cols-2 gap-4">
-        <WifiForm />
-        <WifiInfo
-          class="row-span-2">
-          <QRCode />
-        </WifiInfo>
-      </div>
-    </div>
+    <main id="page-main" class="container">
+      <WifiForm class="wifi-form" />
+      <WifiInfo
+        class="wifi-info">
+        <QRCode />
+      </WifiInfo>
+    </main>
   </div>
 </template>
 

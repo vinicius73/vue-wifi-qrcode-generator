@@ -44,3 +44,23 @@ label {
 .page-header .logo {
   width: 28px;
 }
+
+#page-main {
+  @apply mt-2 grid grid-cols-2 gap-4
+}
+
+#page-main .wifi-info {
+  @apply row-span-2
+}
+
+/* print */
+
+@media print {
+  .page-header, .wifi-form {
+    display: none;
+  }
+
+  #page-main {
+    @apply grid-cols-1 max-w-screen-sm
+  }
+}
