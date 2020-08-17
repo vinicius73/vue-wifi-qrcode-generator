@@ -1,7 +1,6 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-
 /* variables */
 
 :root {
@@ -94,5 +93,11 @@ hr {
   }
   .box {
     @apply shadow-none border-solid border-vue-blue border-2;
+  }
+}
+
+@media (max-width: 768px) {
+  #page-main {
+    @apply grid-cols-1;
   }
 }
