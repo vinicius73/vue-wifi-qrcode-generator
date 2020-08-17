@@ -1,11 +1,12 @@
 <script>
 import { watchEffect } from 'vue'
 import { useWifi } from '../state/wifi'
-import IconArrowUp from './icons/ArrowUp.vue'
+import FormInput from './form/Input.vue'
+import FormSelect from './form/Select.vue'
 
 export default {
   name: 'WifiInfo',
-  components: { IconArrowUp },
+  components: { FormInput, FormSelect },
   setup () {
     const { state, setState } = useWifi()
     const onChange = ev => {
@@ -25,7 +26,7 @@ export default {
     })
 
     return {
-      state,
+      ...state,
       onChange
     }
   }
@@ -34,51 +35,27 @@ export default {
 
 <template>
   <form @submit.prevent="" autocomplete="off" class="box">
-    <div class="mb-4">
-      <label for="input-ssid">
-        Network name
-      </label>
-      <input
-        :value="state.ssid"
-        @input="onChange"
-        name="ssid"
-        id="input-ssid"
-        type="text"
-        placeholder="SSID">
-    </div>
+    <FormInput
+      @input="onChange"
+      :value="ssid"
+      class="mb-4"
+      name="ssid"
+      label="Network name"
+      placeholder="SSID" />
 
-    <div v-if="state.type !== 'nopass'" class="mb-4">
-      <label for="input-password">
-        Password
-      </label>
-      <input
-        :value="state.password"
-        @input="onChange"
-        name="password"
-        id="input-password"
-        type="text"
-        placeholder="Password">
-    </div>
+    <FormInput
+      v-if="type !== 'nopass'"
+      @input="onChange"
+      :value="password"
+      class="mb-4"
+      name="password"
+      label="Password"
+      placeholder="Password" />
 
-    <div class="mb-4">
-      <label for="select-type">
-        Security Type
-      </label>
-      <div class="relative">
-        <select
-          name="type"
-          id="select-type"
-          @change="onChange"
-          :value="state.type">
-          <option value="WEP">WEP</option>
-          <option value="WPA">WPA</option>
-          <option value="WPA2-EAP">WPA2-EAP</option>
-          <option value="nopass">nopass</option>
-        </select>
-        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-          <IconArrowUp />
-        </div>
-      </div>
-    </div>
+    <FormSelect
+      @change="onChange"
+      name="type"
+      :value="type"
+      :options="['WEP', 'WPA', 'WPA2-EAP', 'nopass']" />
   </form>
 </template>
