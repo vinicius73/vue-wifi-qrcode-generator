@@ -2,7 +2,12 @@
   <div id="app">
     <PageHeader />
     <main id="page-main" class="container">
-      <WifiForm class="wifi-form" />
+      <div class="wifi-form">
+        <WifiForm />
+        <div class="version-text">
+          <a href="https://github.com/vinicius73/vue-wifi-qrcode-generator" target="_blank">v1.0.0</a>
+        </div>
+      </div>
       <WifiInfo
         class="wifi-info">
         <QRCode />
