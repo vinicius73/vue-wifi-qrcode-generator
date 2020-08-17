@@ -11,7 +11,7 @@ const useQRCode = getter => {
       text,
       {
         errorCorrectionLevel: 'H',
-        margin: 2,
+        margin: 0,
         scale: 50
       }
     )

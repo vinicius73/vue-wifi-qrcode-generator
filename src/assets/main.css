@@ -77,7 +77,7 @@ label {
 }
 
 hr {
-  @apply border-solid border-vue-blue border-2 mb-4;
+  @apply border-solid border-vue-blue border-2 mb-4 mt-4;
 }
 
 /* print */
