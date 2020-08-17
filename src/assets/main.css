@@ -19,8 +19,28 @@ select:focus {
   @apply outline-none bg-white border-gray-500;
 }
 
+label {
+  @apply block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2
+}
+
 /* elements */
 
 .box {
   @apply bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4;
+}
+
+.container {
+  @apply mx-auto max-w-4xl
+}
+
+.page-header {
+  @apply flex items-center justify-between flex-wrap bg-blue-900 p-6 text-white
+}
+
+.page-header h1 {
+  @apply text-xl ml-5
+}
+
+.page-header .logo {
+  width: 28px;
 }

@@ -1,7 +1,9 @@
 <script>
 import { useWifi } from '../state/wifi'
+import IconWifi from './icons/Wifi.vue'
 
 export default {
+  components: { IconWifi },
   setup () {
     const { state } = useWifi()
 
@@ -13,7 +15,10 @@ export default {
 </script>
 
 <template>
-  <div class="box">
+  <section class="box">
+    <header class="flex justify-center">
+      <IconWifi />
+    </header>
     <slot />
     <hr>
     <dl>
@@ -26,7 +31,7 @@ export default {
       <dt>Password</dt>
       <dd>{{ state.password }}</dd>
     </dl>
-  </div>
+  </section>
 </template>
 
 <style scoped>
@@ -39,5 +44,6 @@ dl dd {
   font-size: 1.2em;
   font-family: monospace;
   margin-bottom: 1em;
+  padding-left: 1em;
 }
 </style>
