@@ -9,10 +9,11 @@ export default {
   setup () {
     const { state } = useWifi()
 
-    const imageSrc = useQRCode(() => buildQRCodeData(state))
+    const { src: imageSrc, raw } = useQRCode(() => buildQRCodeData(state))
     const hasImage = computed(() => imageSrc.value.length > 0)
 
     return {
+      raw,
       imageSrc,
       hasImage
     }
@@ -22,7 +23,10 @@ export default {
 
 <template>
   <div>
-    <img v-if="hasImage" :src="imageSrc">
+    <img v-if="hasImage"
+      :src="imageSrc"
+      :alt="raw"
+      title="QR Code Image">
     <div v-else>
       Loading...
     </div>

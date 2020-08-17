@@ -23,7 +23,10 @@ const useQRCode = getter => {
     })
   })
 
-  return readonly(src)
+  return {
+    src: readonly(src),
+    raw
+  }
 }
 
 export { useQRCode }
