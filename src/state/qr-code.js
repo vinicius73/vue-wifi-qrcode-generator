@@ -2,7 +2,7 @@ import QRCode from 'qrcode'
 import { debounce } from 'lodash-es'
 import { readonly, ref, computed, watchEffect, onMounted } from 'vue'
 
-const useQRCode = getter => {
+const useQRCode = (getter, options = {}) => {
   const raw = computed(getter)
   const src = ref('')
 
@@ -12,7 +12,8 @@ const useQRCode = getter => {
       {
         errorCorrectionLevel: 'H',
         margin: 0,
-        scale: 50
+        scale: 50,
+        ...options
       }
     )
   }, 500)

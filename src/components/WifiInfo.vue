@@ -37,7 +37,7 @@ export default {
 
     const shareError = ref(null)
 
-    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state))
+    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state), { margin: 2 })
 
     const print = () => {
       window.print()
