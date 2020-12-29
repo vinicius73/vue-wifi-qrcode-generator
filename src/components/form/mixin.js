@@ -1,4 +1,6 @@
+import { computed } from 'vue'
 import { random } from '../../lib/strings'
+import { isEmpty } from 'lodash-es'
 
 const mixin = {
   props: {
@@ -11,24 +13,33 @@ const mixin = {
       default: () => `input-${random()}`
     }
   },
-  emits: ['input'],
+  emits: ['input', 'change'],
   change: ['change']
 }
 
 const useInputProps = (props, { emit }) => {
-  const { name, id } = props
-  const label = (props.label || name) || ''
+  const label = computed(() => {
+    const { label } = props
+
+    return isEmpty(label) ? false : label
+  })
+
+  const name = computed(() => {
+    return props.name || props.id
+  })
 
   const on = name => event => {
     emit(name, event)
   }
 
   return {
-    ...props,
+    label,
+    name,
+    id: props.id,
+    value: computed(() => props.value),
+    placeholder: computed(() => props.placeholder),
     onInput: on('input'),
-    onChange: on('change'),
-    label: label.length > 0 ? label : false,
-    name: name || id
+    onChange: on('change')
   }
 }
 
