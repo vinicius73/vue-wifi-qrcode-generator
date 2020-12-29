@@ -10,7 +10,11 @@ const setState = newState => {
   Object.assign(state, newState)
 }
 
-const useWifi = () => {
+const useWifi = (def) => {
+  if (def) {
+    setState(def)
+  }
+
   return { state: readonly(state), setState }
 }
 
