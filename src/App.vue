@@ -5,7 +5,7 @@
       <div class="wifi-form">
         <WifiForm />
         <div class="version-text">
-          <a href="https://github.com/vinicius73/vue-wifi-qrcode-generator" target="_blank">v1.0.0</a>
+          <a href="https://github.com/vinicius73/vue-wifi-qrcode-generator" target="_blank">v1.1.2</a>
         </div>
       </div>
       <WifiInfo
