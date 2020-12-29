@@ -10,6 +10,9 @@ Share your Wi-Fi Network with your guests!
 - [QRCode](https://github.com/soldair/node-qrcode)
 - [lodash](https://lodash.com/)
 
+## Icon pack
+- [Table Icons](https://tablericons.com/)
+
 ## Commands
 
 ```sh
