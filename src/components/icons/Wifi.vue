@@ -1,5 +1,7 @@
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: 'WifiIcon',
   props: {
     color: {
@@ -7,7 +9,7 @@ export default {
       default: '#000000'
     }
   }
-}
+})
 </script>
 
 <template>

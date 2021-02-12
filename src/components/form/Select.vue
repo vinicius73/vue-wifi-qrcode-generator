@@ -1,20 +1,22 @@
-<script>
-import { mixin, useInputProps } from './mixin'
+<script lang="ts">
+import { mixin, useInputProps, MixinProps } from './mixin'
 import IconArrowUp from '../icons/ArrowUp.vue'
+import { defineComponent, PropType } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'FormSelect',
   components: { IconArrowUp },
   mixins: [mixin],
   props: {
     options: {
-      type: Array
+      required: true,
+      type: Array as PropType<string[]>,
     }
   },
   setup (props, context) {
-    return useInputProps(props, context)
+    return useInputProps(props as unknown as MixinProps, context)
   }
-}
+})
 </script>
 
 <template>

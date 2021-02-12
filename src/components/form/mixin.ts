@@ -1,8 +1,16 @@
-import { computed } from 'vue'
+import { computed, ComponentOptionsMixin, SetupContext } from 'vue'
 import { random } from '../../lib/strings'
 import { isEmpty } from 'lodash-es'
 
-const mixin = {
+interface MixinProps {
+  label: string,
+  value: string,
+  name: string,
+  placeholder: string,
+  id: string,
+}
+
+const mixin: ComponentOptionsMixin = {
   props: {
     label: String,
     value: String,
@@ -17,7 +25,7 @@ const mixin = {
   change: ['change']
 }
 
-const useInputProps = (props, { emit }) => {
+const useInputProps = (props: MixinProps, { emit }: SetupContext) => {
   const label = computed(() => {
     const { label } = props
 
@@ -28,7 +36,7 @@ const useInputProps = (props, { emit }) => {
     return props.name || props.id
   })
 
-  const on = name => event => {
+  const on = (name: string) => (event: Event) => {
     emit(name, event)
   }
 
@@ -43,4 +51,8 @@ const useInputProps = (props, { emit }) => {
   }
 }
 
-export { mixin, useInputProps }
+export {
+  mixin,
+  useInputProps,
+  MixinProps
+}

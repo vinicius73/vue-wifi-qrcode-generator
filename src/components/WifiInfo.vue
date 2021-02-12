@@ -1,13 +1,13 @@
-<script>
+<script lang="ts">
 import { useWifi } from '../state/wifi'
 import { useQRCode } from '../state/qr-code'
 import { buildQRCodeData } from '../lib/qr-code'
 import IconWifi from './icons/Wifi.vue'
 import IconPrinter from './icons/Printer.vue'
 import IconShare from './icons/Share.vue'
-import { ref } from 'vue'
+import { ref, defineComponent } from 'vue'
 
-const getFile = async (src) => {
+const getFile = async (src: string) => {
   const blob = await fetch(src).then((r) => r.blob())
 
   return new File([blob], 'wifi.png', {
@@ -15,21 +15,22 @@ const getFile = async (src) => {
   })
 }
 
-const sharePage = async (src) => {
+const sharePage = async (src: string) => {
   const file = await getFile(src)
 
-  const description = document
-    .querySelector('meta[name="description"]').content
+  const description: string = document
+    .querySelector<HTMLMetaElement>('meta[name="description"]')?.content || 'Vue Wi-Fi QR Code Generator'
 
   return navigator.share({
     title: document.title,
     text: description,
     url: window.location.href,
+    // @ts-ignore
     files: [file]
   })
 }
 
-export default {
+export default defineComponent({
   name: 'wifi-info',
   components: { IconWifi, IconPrinter, IconShare },
   setup () {
@@ -59,11 +60,12 @@ export default {
     return {
       print,
       shareError,
-      share: navigator.share ? share : false,
+      supportShare: !!navigator.share,
+      share: share,
       state
     }
   }
-}
+})
 </script>
 
 <template>
@@ -92,7 +94,7 @@ export default {
 
       <button
         :class="{ error: !!shareError }"
-        v-if="share"
+        v-if="supportShare"
         @click="share">
         <IconShare />
         {{ shareError ? shareError : 'Share' }}

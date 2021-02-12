@@ -1,10 +1,10 @@
-<script>
-import { computed } from 'vue'
+<script lang="ts">
+import { computed, defineComponent } from 'vue'
 import { buildQRCodeData } from '../lib/qr-code'
 import { useWifi } from '../state/wifi'
 import { useQRCode } from '../state/qr-code'
 
-export default {
+export default defineComponent({
   name: 'QRCode',
   setup () {
     const { state } = useWifi()
@@ -18,7 +18,7 @@ export default {
       hasImage
     }
   }
-}
+})
 </script>
 
 <template>

@@ -1,10 +1,11 @@
-<script>
+<script lang="ts">
+import { defineComponent } from 'vue'
 import IconQRCode from './icons/QRCode.vue'
 
-export default {
+export default defineComponent({
   name: 'PageHeader',
   components: { IconQRCode }
-}
+})
 </script>
 
 <template>
