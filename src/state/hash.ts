@@ -1,5 +1,5 @@
-import { debounce, isEmpty } from 'lodash-es'
 import { computed, readonly, ref, watchEffect } from 'vue'
+import { debounce, isEmpty } from 'lodash-es'
 import { onIdle } from '../lib/on-idle'
 
 const getHash = () => {
@@ -10,7 +10,7 @@ const getHash = () => {
     : val
 }
 
-const getCurrent = (prefix) => {
+const getCurrent = (prefix: string) => {
   const val = getHash()
 
   if (isEmpty(val)) {
@@ -31,7 +31,7 @@ const getCurrent = (prefix) => {
   return {}
 }
 
-const useHash = (prefix, getter) => {
+const useHash = (prefix: string, getter: () => Record<string, string>) => {
   const raw = computed(getter)
 
   const hash = ref('')

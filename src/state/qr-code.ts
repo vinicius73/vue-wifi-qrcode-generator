@@ -2,11 +2,11 @@ import QRCode from 'qrcode'
 import { debounce } from 'lodash-es'
 import { readonly, ref, computed, watchEffect, onMounted } from 'vue'
 
-const useQRCode = (getter, options = {}) => {
+const useQRCode = (getter: () => string, options = {}) => {
   const raw = computed(getter)
   const src = ref('')
 
-  const updateQrCode = debounce(async text => {
+  const updateQrCode = debounce(async (text: string) => {
     src.value = await QRCode.toDataURL(
       text,
       {

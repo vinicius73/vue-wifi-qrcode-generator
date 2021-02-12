@@ -1,13 +1,14 @@
-<script>
-import { mixin, useInputProps } from './mixin'
+<script lang="ts">
+import { mixin, useInputProps, MixinProps } from './mixin'
+import { defineComponent } from 'vue'
 
-export default {
+export default defineComponent({
   name: 'FormInput',
   mixins: [mixin],
   setup (props, context) {
-    return useInputProps(props, context)
+    return useInputProps(props as unknown as MixinProps, context)
   }
-}
+})
 </script>
 
 <template>

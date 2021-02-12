@@ -4,8 +4,10 @@ import { isFunction } from 'lodash-es'
  * @param {Function}
  * @returns {void}
  */
-const subscribe = ((w) => {
+const subscribe: <R = any>(cb: () => R) => R = ((w) => {
+  // @ts-ignore
   if (isFunction(w.requestIdleCallback)) {
+    // @ts-ignore
     return w.requestIdleCallback.bind(w)
   }
 
@@ -13,7 +15,7 @@ const subscribe = ((w) => {
     return w.requestAnimationFrame.bind(w)
   }
 
-  return function _setTimeout (fn) {
+  return function _setTimeout (fn: <R>() => R) {
     return setTimeout(fn, 1)
   }
 })(window)
@@ -22,11 +24,9 @@ const subscribe = ((w) => {
  * @param {Function} fn
  * @returns {Promise<any>}
  */
-const onIdle = (fn) => {
+const onIdle = <R = void>(fn: () => R | Promise<R>): Promise<R> => {
   return new Promise(resolve => {
-    subscribe(() => {
-      resolve(fn && fn())
-    })
+    subscribe(() => resolve(fn && fn()))
   })
 }
 

@@ -254,12 +254,36 @@
   resolved "https://registry.yarnpkg.com/@types/braces/-/braces-3.0.0.tgz#7da1c0d44ff1c7eb660a36ec078ea61ba7eb42cb"
   integrity sha512-TbH79tcyi9FHwbyboOKeRachRq63mSuWYXOflsNO9ZyE5ClQ/JaozNKl+aWUq87qPNsXasXxi2AbgfwIJ+8GQw==
 
+"@types/lodash-es@^4.17.4":
+  version "4.17.4"
+  resolved "https://registry.yarnpkg.com/@types/lodash-es/-/lodash-es-4.17.4.tgz#b2e440d2bf8a93584a9fd798452ec497986c9b97"
+  integrity sha512-BBz79DCJbD2CVYZH67MBeHZRX++HF+5p8Mo5MzjZi64Wac39S3diedJYHZtScbRVf4DjZyN6LzA0SB0zy+HSSQ==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
+  version "4.14.168"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.168.tgz#fe24632e79b7ade3f132891afff86caa5e5ce008"
+  integrity sha512-oVfRvqHV/V6D1yifJbVRU3TMp8OT6o6BG+U9MkwuJ3U8/CsDHvalRpsxBqivn71ztOFZBTfJMvETbqHiaNSj7Q==
+
 "@types/micromatch@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@types/micromatch/-/micromatch-4.0.1.tgz#9381449dd659fc3823fd2a4190ceacc985083bc7"
   integrity sha512-my6fLBvpY70KattTNzYOK6KU1oR1+UCz9ug/JbcF5UrEmeCt9P7DV2t7L8+t18mMPINqGQCE4O8PLOPbI84gxw==
   dependencies:
     "@types/braces" "*"
+
+"@types/node@*":
+  version "14.14.27"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.27.tgz#c7127f8da0498993e13b1a42faf1303d3110d2f2"
+  integrity sha512-Ecfmo4YDQPwuqTCl1yBxLV5ihKfRlkBmzUEDcfIRvDxOTGQEeikr317Ln7Gcv0tjA8dVgKI3rniqW2G1OyKDng==
+
+"@types/qrcode@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@types/qrcode/-/qrcode-1.4.0.tgz#103a93c6dfcbd022f9a9ca445e49a3477f799303"
+  integrity sha512-BwDnCjdZKVOyy6+SPJ4ph+0DAftZGn5JFCY/MhetdEQ8yF6+YndhJWlfdBP8vtMe0w5/FH29Xi6bnEwVWkU1LQ==
+  dependencies:
+    "@types/node" "*"
 
 "@vitejs/plugin-vue@^1.1.4":
   version "1.1.4"
