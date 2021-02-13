@@ -1,15 +1,23 @@
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { computed, defineComponent, PropType } from 'vue'
 import { buildQRCodeData } from '../lib/qr-code'
 import { useWifi } from '../state/wifi'
-import { useQRCode } from '../state/qr-code'
+import { useQRCode, QualityTypes } from '../state/qr-code'
+
+export { QualityTypes }
 
 export default defineComponent({
   name: 'QRCode',
-  setup () {
+  props: {
+    quality: {
+      type: String as PropType<QualityTypes>,
+      default: () => QualityTypes.HIGH
+    }
+  },
+  setup (props) {
     const { state } = useWifi()
 
-    const { src: imageSrc, raw } = useQRCode(() => buildQRCodeData(state))
+    const { src: imageSrc, raw } = useQRCode(() => buildQRCodeData(state), props.quality)
     const hasImage = computed(() => imageSrc.value.length > 0)
 
     return {

@@ -70,38 +70,25 @@ export default defineComponent({
 </script>
 
 <template>
-  <section class="box">
-    <header class="flex justify-center">
-      <IconWifi />
-    </header>
-    <slot />
-    <hr>
-    <dl>
-      <dt>Network</dt>
-      <dd>{{ state.ssid }}</dd>
+  <div class="hide-on-print action-buttons text-center">
+    <hr class="border-vue-green">
+    <CastButton v-bind="{ state }" />
+    <button @click="print">
+      <IconPrinter />
+      Print your QR Code
+    </button>
 
-      <dt>Type</dt>
-      <dd>{{ state.type }}</dd>
-
-      <dt>Password</dt>
-      <dd>{{ state.password }}</dd>
-    </dl>
-    <slot name="footer" />
-  </section>
+    <button
+      :class="{ error: !!shareError }"
+      v-if="supportShare"
+      @click="share">
+      <IconShare />
+      {{ shareError ? shareError : 'Share' }}
+    </button>
+  </div>
 </template>
 
 <style scoped>
-dl dt {
-  font-weight: normal;
-  font-style: italic;
-}
-dl dd {
-  font-weight: bold;
-  font-size: 1.5em;
-  font-family: monospace;
-  margin-bottom: 0.8em;
-  padding-left: 0.9em;
-}
 .action-buttons button {
   margin-right: 0.5em;
 }

@@ -1,22 +1,39 @@
 import QRCode from 'qrcode'
 import { debounce } from 'lodash-es'
-import { readonly, ref, computed, watchEffect, onMounted } from 'vue'
+import { onIdle } from '../lib/on-idle'
 
-const useQRCode = (getter: () => string, options = {}) => {
+import {
+  readonly,
+  ref,
+  computed,
+  watchEffect,
+  onMounted
+} from 'vue'
+
+export enum QualityTypes {
+  HIGH = 'H',
+  MEDIUM = 'M',
+  LOW = 'L'
+}
+
+const useQRCode = (getter: () => string, quality: QualityTypes) => {
   const raw = computed(getter)
   const src = ref('')
 
-  const updateQrCode = debounce(async (text: string) => {
-    src.value = await QRCode.toDataURL(
-      text,
-      {
-        errorCorrectionLevel: 'H',
-        margin: 0,
-        scale: 50,
-        ...options
-      }
-    )
-  }, 500)
+  const updateQrCode = debounce((text: string) => {
+    onIdle(async () => {
+      src.value = await QRCode.toDataURL(
+        text,
+        {
+          errorCorrectionLevel: quality,
+          margin: 0,
+          scale: 50
+        }
+      )
+    })
+    .catch(console.warn)
+
+  }, 600)
 
   onMounted(() => {
     watchEffect(() => {
