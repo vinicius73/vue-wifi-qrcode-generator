@@ -5,7 +5,7 @@
       <div class="wifi-form">
         <WifiForm />
         <div class="version-text">
-          <a href="https://github.com/vinicius73/vue-wifi-qrcode-generator" target="_blank">v1.1.2</a>
+          <a href="https://github.com/vinicius73/vue-wifi-qrcode-generator" target="_blank">v{{ version }}</a>
         </div>
       </div>
       <WifiInfo
@@ -42,6 +42,11 @@ export default {
     PageHeader,
     PageFooter,
     WifiInfoActions
+  },
+  setup () {
+    return {
+      version: import.meta.env.VITE_APP_VERSION
+    }
   }
 }
 </script>
