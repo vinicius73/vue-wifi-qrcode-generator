@@ -6,7 +6,6 @@ import { buildQRCodeData } from '../lib/qr-code'
 import IconWifi from './icons/Wifi.vue'
 import IconPrinter from './icons/Printer.vue'
 import IconShare from './icons/Share.vue'
-import CastButton from './CastButton.vue'
 
 const getFile = async (src: string) => {
   const blob = await fetch(src).then((r) => r.blob())
@@ -33,7 +32,7 @@ const sharePage = async (src: string) => {
 
 export default defineComponent({
   name: 'wifi-info',
-  components: { IconWifi, IconPrinter, IconShare, CastButton },
+  components: { IconWifi, IconPrinter, IconShare },
   setup () {
     const { state } = useWifi()
 
@@ -72,8 +71,6 @@ export default defineComponent({
 <template>
   <div class="hide-on-print action-buttons text-center">
     <hr class="border-vue-green">
-
-    <!-- <CastButton /> -->
 
     <button @click="print">
       <IconPrinter />

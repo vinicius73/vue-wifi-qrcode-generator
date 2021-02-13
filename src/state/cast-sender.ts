@@ -1,4 +1,4 @@
-import { ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { loadScript } from '../lib/cast/sender'
 import { MESSAGES } from '../lib/cast/types'
 import { onIdle } from '../lib/on-idle'
