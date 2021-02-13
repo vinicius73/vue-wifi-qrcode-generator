@@ -2,14 +2,13 @@
 import { computed, defineComponent, watchEffect, ref } from 'vue'
 import { MESSAGES } from '../lib/cast/types'
 import { useSender } from '../state/cast-sender'
+import { useWifi } from '../state/wifi'
 
 export default defineComponent({
   name: 'CastButton',
-  props: {
-    state: Object
-  },
   setup (props) {
-    const data = computed(() => btoa(JSON.stringify(props.state)))
+    const { state } = useWifi()
+    const data = computed(() => btoa(JSON.stringify(state)))
 
     const trigger = ref(0)
     let interval: NodeJS.Timeout
@@ -42,5 +41,14 @@ export default defineComponent({
 </script>
 
 <template>
-  <google-cast-launcher></google-cast-launcher>
+  <div title="Cast to Google Chrome" class="google-cast-launcher">
+    <google-cast-launcher />
+  </div>
 </template>
+
+<style>
+.google-cast-launcher {
+  width: 3em;
+  cursor: pointer;
+}
+</style>

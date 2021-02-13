@@ -31,10 +31,12 @@ export default defineComponent({
 
 <template>
   <div>
-    <img v-if="hasImage"
-      :src="imageSrc"
-      :alt="raw"
-      title="QR Code Image">
+    <template v-if="hasImage">
+      <img :src="imageSrc"
+        :alt="raw"
+        title="QR Code Image">
+      <slot />
+    </template>
     <div v-else>
       Loading...
     </div>

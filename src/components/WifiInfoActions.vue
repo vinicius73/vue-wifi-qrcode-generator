@@ -1,7 +1,7 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { useWifi } from '../state/wifi'
-import { useQRCode } from '../state/qr-code'
+import { useQRCode, QualityTypes } from '../state/qr-code'
 import { buildQRCodeData } from '../lib/qr-code'
 import IconWifi from './icons/Wifi.vue'
 import IconPrinter from './icons/Printer.vue'
@@ -39,7 +39,7 @@ export default defineComponent({
 
     const shareError = ref(null)
 
-    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state), { margin: 2 })
+    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state), QualityTypes.HIGH)
 
     const print = () => {
       window.print()
@@ -72,7 +72,9 @@ export default defineComponent({
 <template>
   <div class="hide-on-print action-buttons text-center">
     <hr class="border-vue-green">
-    <CastButton v-bind="{ state }" />
+
+    <!-- <CastButton /> -->
+
     <button @click="print">
       <IconPrinter />
       Print your QR Code

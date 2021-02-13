@@ -11,6 +11,9 @@
       <WifiInfo
         class="wifi-info">
         <QRCode />
+        <template #main>
+          <CastButton />
+        </template>
         <template #footer>
           <WifiInfoActions />
         </template>
@@ -27,12 +30,14 @@ import WifiForm from './components/WifiForm.vue'
 import QRCode from './components/QRCode.vue'
 import WifiInfo from './components/WifiInfo.vue'
 import WifiInfoActions from './components/WifiInfoActions.vue'
+import CastButton from './components/CastButton.vue'
 
 export default {
   name: 'App',
   components: {
     WifiForm,
     QRCode,
+    CastButton,
     WifiInfo,
     PageHeader,
     PageFooter,

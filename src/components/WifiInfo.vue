@@ -1,12 +1,11 @@
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
 import { useWifi } from '../state/wifi'
-import { useQRCode } from '../state/qr-code'
+import { useQRCode, QualityTypes } from '../state/qr-code'
 import { buildQRCodeData } from '../lib/qr-code'
 import IconWifi from './icons/Wifi.vue'
 import IconPrinter from './icons/Printer.vue'
 import IconShare from './icons/Share.vue'
-import CastButton from './CastButton.vue'
 
 const getFile = async (src: string) => {
   const blob = await fetch(src).then((r) => r.blob())
@@ -33,13 +32,13 @@ const sharePage = async (src: string) => {
 
 export default defineComponent({
   name: 'wifi-info',
-  components: { IconWifi, IconPrinter, IconShare, CastButton },
+  components: { IconWifi, IconPrinter, IconShare },
   setup () {
     const { state } = useWifi()
 
     const shareError = ref(null)
 
-    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state), { margin: 2 })
+    const { src: imageSrc } = useQRCode(() => buildQRCodeData(state), QualityTypes.HIGH)
 
     const print = () => {
       window.print()
@@ -76,6 +75,9 @@ export default defineComponent({
     </header>
     <slot />
     <hr>
+    <div class="box-main">
+      <slot name="main" />
+    </div>
     <dl>
       <dt>Network</dt>
       <dd>{{ state.ssid }}</dd>
@@ -107,5 +109,8 @@ dl dd {
 }
 .action-buttons button:last-child {
   margin-right: 0;
+}
+.box-main {
+  float: right;
 }
 </style>
