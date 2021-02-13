@@ -5,22 +5,30 @@ import { onIdle } from '../lib/on-idle'
 import { debounce } from 'lodash-es'
 
 const useSender = () => {
-  const status = ref<String | null>(null)
-  const isConnected = ref(false)
+  const castState        = ref<String | null>(null)
+  const sessionState  = ref<String | null>(null)
+  const isConnected   = ref(false)
 
   let instance: cast.framework.CastContext
 
   loadScript(ctx => {
     instance = ctx
 
-    const { CAST_STATE_CHANGED } = cast.framework.CastContextEventType
+    const { CAST_STATE_CHANGED, SESSION_STATE_CHANGED } = cast.framework.CastContextEventType
 
     instance.addEventListener(
       CAST_STATE_CHANGED,
-      ({ castState }: cast.framework.CastStateEventData) => {
+      (ev: cast.framework.CastStateEventData) => {
         console.debug(`cast: state ${castState}`)
-        status.value = castState
-        isConnected.value = castState === cast.framework.CastState.CONNECTED
+        castState.value = ev.castState
+        isConnected.value = ev.castState === cast.framework.CastState.CONNECTED
+      })
+
+    instance.addEventListener(
+      SESSION_STATE_CHANGED,
+      (ev: cast.framework.SessionStateEventData) => {
+        console.debug(`cast: sessionState ${ev.sessionState}`)
+        sessionState.value = ev.sessionState
       })
   })
 
@@ -28,19 +36,19 @@ const useSender = () => {
     const session = instance?.getCurrentSession()
 
     if (!session) {
-      console.warn('cast: missin session', data);
+      console.warn('cast: missin session');
       return
     }
 
-    console.log('cast: sending', data)
+    console.log('cast: sending', namespace)
 
     onIdle(() => session.sendMessage(namespace, data))
-      .then(console.log)
       .catch(console.warn)
   }, 1_000)
 
   return {
-    status,
+    castState,
+    sessionState,
     sendMessage,
     isConnected
   }

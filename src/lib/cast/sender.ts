@@ -2,7 +2,7 @@ import { random } from '../strings'
 
 const SENDER_ADDRESS = 'https://www.gstatic.com/cv/js/sender/v1/cast_sender.js?loadCastFramework=1'
 const HOOK_KEY = '__onGCastApiAvailable'
-const APPLICATION_ID = import.meta.env.VITE_CAST_APPLICATION_ID
+const APPLICATION_ID = String(import.meta.env.VITE_CAST_APPLICATION_ID)
 const SCRIPT_ID = random()
 
 const loadScript = (onAvailable: (x: any) => void, onLoad?: () => any) => {
