@@ -7,6 +7,7 @@ import QRCode, { QualityTypes } from './components/QRCode.vue'
 import PageFooter from './components/PageFooter.vue'
 import PageHeader from './components/PageHeader.vue'
 import WifiInfo from './components/WifiInfo.vue'
+import ActivityIcon from './components/icons/Activity.vue'
 
 const parseEvent = async (raw: string): Promise<QRCodeData> => {
   return JSON.parse(atob(raw))
@@ -14,7 +15,7 @@ const parseEvent = async (raw: string): Promise<QRCodeData> => {
 
 export default {
   name: 'CastApp',
-  components: { PageHeader, PageFooter, WifiInfo, QRCode },
+  components: { PageHeader, PageFooter, WifiInfo, QRCode, ActivityIcon },
   setup () {
     const ready = ref(false)
     const { state, setState } = useWifi()
@@ -45,21 +46,30 @@ export default {
 
 <template>
   <div id="app">
-    <PageHeader />
+    <PageHeader castMode />
     <main v-if="ready" id="page-main" class="container">
-      <WifiInfo>
-        <template #footer>
-          github.com/vinicius73
-        </template>
-      </WifiInfo>
+      <WifiInfo />
       <section class="box">
         <QRCode v-bind="{ quality }" />
       </section>
     </main>
     <main v-else>
-      <p>
-        Waiting...
-      </p>
+      <div class="container cast-waiting">
+        <ActivityIcon />
+        <p>
+          Waiting...
+        </p>
+      </div>
     </main>
+    <PageFooter castMode />
   </div>
 </template>
+
+<style scoped>
+.cast-waiting > svg {
+  margin: 0 auto;
+}
+.cast-waiting p {
+  text-align: center;
+}
+</style>

@@ -4,7 +4,13 @@ import IconQRCode from './icons/QRCode.vue'
 
 export default defineComponent({
   name: 'PageHeader',
-  components: { IconQRCode }
+  components: { IconQRCode },
+  props: {
+    castMode: {
+      type: Boolean,
+      default: () => false
+    }
+  }
 })
 </script>
 
@@ -13,7 +19,7 @@ export default defineComponent({
     <div class="container">
       <div class="flex items-center justify-center">
         <IconQRCode color="#34495E" class="logo" />
-        <h1>Wi-Fi QR Code Generator</h1>
+        <h1>Wi-Fi QRCode <span v-if="!castMode">Generator</span></h1>
       </div>
     </div>
   </header>
